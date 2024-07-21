@@ -24,7 +24,7 @@ module.exports = {
 
 		const row = new ActionRowBuilder()
 			.addComponents(reload);	
-
+			
 		 const quotes = [
 			"Sarge, with all due respect, I am gonna completely ignore everything you just said.\n - Brooklyn 99, Jake Peralta",
 			"You should make me your campaign manager. I was born for politics. I have great hair and I love lying.\n - Brooklyn 99, Gina Linetti",

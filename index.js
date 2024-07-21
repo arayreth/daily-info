@@ -1,9 +1,10 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits,InteractionResponse, ButtonBuilder, ButtonStyle, ActionRowBuilder, EmbedBuilder } = require('discord.js');
-const { token } = require('./config.json');
+const { Client, Collection, Events, GatewayIntentBits,InteractionResponse, ButtonBuilder, ButtonStyle, ActionRowBuilder, EmbedBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const { token, apiKey } = require('./config.json');
 const { createConnection } = require('mysql');
 const config = require('./config.json');
+const axios = require('axios');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
@@ -253,22 +254,97 @@ client.on(Events.InteractionCreate, async interaction => {
 			const Response1 = Math.floor(Math.random() * lyrics.length);
 			await interaction.reply({content: `> 🎶 ${lyrics[Response1]}`, components: [row1]})
 		}
+		else if(interaction.customId === "next"){
+			const m_city = new ModalBuilder()
+			.setCustomId('m_city')
+			.setTitle('City selection');
+
+			const city = new TextInputBuilder()
+			.setCustomId('city')
+			.setLabel("For which city do you want the weather ?")
+			.setStyle(TextInputStyle.Short);
+
+			const row = new ActionRowBuilder().addComponents(city)
+			m_city.addComponents(row)
+			await interaction.showModal(m_city)
 	}
+	else if(interaction.customId === "suivant"){
+		const m_ville = new ModalBuilder()
+		.setCustomId('m_ville')
+		.setTitle('Sélection de la ville');
+
+		const ville = new TextInputBuilder()
+		.setCustomId('ville')
+		.setLabel("Pour quelle ville voulez-vous la météo ?")
+		.setStyle(TextInputStyle.Short);
+
+		const row = new ActionRowBuilder().addComponents(ville)
+		m_ville.addComponents(row)
+		await interaction.showModal(m_ville)
+	}
+}
 	else if (interaction.isStringSelectMenu()){
 		if(interaction.customId === "languages"){
-		//update the language of the server in the database
 		if(interaction.values == "en"){
 			con.query(`UPDATE server SET languages = 'en' WHERE server_id = '${interaction.guild.id}'`, (err, rows) => {
 				if (err) return console.log(err);
-				interaction.reply({ content: "Language set to English !", ephemeral: true });
+				const b_next = new ButtonBuilder()
+				.setCustomId("next")
+				.setEmoji("🌦️")
+				.setLabel("Select the city for the weather")
+				.setStyle(ButtonStyle.Secondary);
+				const row = new ActionRowBuilder()
+				.addComponents(b_next);
+
+				interaction.reply({ content: "Language set to English !",components: [row], ephemeral: true });
 			});
 		}
 		else if(interaction.values == "fr"){
+			const b_suivant = new ButtonBuilder()
+			.setCustomId("suivant")
+			.setEmoji("🌦️")
+			.setLabel("Sélectionnez la ville pour la météo")
+			.setStyle(ButtonStyle.Secondary);
+			const row = new ActionRowBuilder()
+			.addComponents(b_suivant);
 			con.query(`UPDATE server SET languages = 'fr' WHERE server_id = '${interaction.guild.id}'`, (err, rows) => {
 				if (err) return console.log(err);
-				interaction.reply({ content: "La langue a été définie en Français !", ephemeral: true });
+				interaction.reply({ content: "La langue a été définie en Français !",components: [row], ephemeral: true });
 			});
 		}
+}
+}
+   else if(interaction.isModalSubmit()){
+	if(interaction.customId === "m_city"){
+		const city = interaction.fields.getTextInputValue('city');
+		await axios.get(
+			`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
+		.then(response => {
+			let apiData = response;
+			let city = apiData.data.name;
+			interaction.reply({ content: `The weather has been found for the city : ${city} !`, ephemeral: true})
+		}).catch(error => {
+		interaction.reply({ content: "Please indicate a valid city !", ephemeral: true });
+		})
+		con.query(`UPDATE server SET city = '${city}' WHERE server_id = '${interaction.guild.id}'`, (err, rows) => {
+			if (err) return console.log(err);
+		});
+   }
+   else if(interaction.customId === "m_ville"){
+	const ville = interaction.fields.getTextInputValue('ville');
+	await axios.get(
+		`https://api.openweathermap.org/data/2.5/weather?q=${ville}&units=metric&appid=${apiKey}`)
+	.then(response => {
+		let apiData = response;
+		let ville = apiData.data.name;
+		interaction.reply({ content: `La météo a été trouvée pour la ville : ${ville} !`, ephemeral: true})
+	}
+).catch(error => {
+	interaction.reply({ content: "Merci d'indiquer une ville valide !", ephemeral: true });
+})
+    con.query(`UPDATE server SET city = '${ville}' WHERE server_id = '${interaction.guild.id}'`, (err, rows) => {
+	if (err) return console.log(err);
+    });
 }
 }
 });

@@ -22,12 +22,30 @@ module.exports = {
         });
         con.query(`SELECT * FROM server where server_id = ${interaction.guild.id}`, (err, rows) => {
         if(err) throw err;
-        //if languages is "en" then send the english version of the help command
-        //if languages is "fr" then send the french version of the help command
         if(rows[0].languages === "en"){
-           interaction.reply({ content: "This command is still in development", ephemeral: true });
+           const em_en_help = new EmbedBuilder()
+           .setTitle("Help")
+           .setDescription("Here is a list of all the commands available !")
+           .addFields(
+            { name: "</config:1263875298995470366>", value: "Configure the bot for your server." },
+            { name: "</start:1263837821190537247>", value: "The best way to start the day !"},
+            { name: "</quote:1263837821190537246>", value: "Get a random quote." },
+           ) 
+           .setTimestamp()
+           .setFooter({ text: 'Made by Rayreth with 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' });
+           interaction.reply({ embeds: [em_en_help] });
         } else if(rows[0].languages === "fr"){
-           interaction.reply({ content: "Cette commande est encore en développement", ephemeral: true });
+           const em_fr_help = new EmbedBuilder()
+            .setTitle("Aide")
+            .setDescription("Voici une liste de toutes les commandes disponibles !")
+            .addFields(
+              { name: "</config:1263875298995470366>", value: "Configurez le bot pour votre serveur." },
+              { name: "</start:1263837821190537247>", value: "La meilleure façon de commencer la journée !"},
+              { name: "</quote:1263837821190537246>", value: "Obtenez une citation aléatoire." },
+            )
+            .setTimestamp()
+            .setFooter({ text: 'Fait par Rayreth avec 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' })
+            interaction.reply({ embeds: [em_fr_help] });
         }
         }
         );

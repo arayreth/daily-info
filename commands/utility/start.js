@@ -1,5 +1,8 @@
 const { SlashCommandBuilder, InteractionResponse, ButtonBuilder, ButtonStyle, ActionRowBuilder, EmbedBuilder} = require('discord.js');
 const axios = require('axios')
+const { apiKey } = require('../../config.json')
+const { createConnection } = require('mysql');
+const config = require('../../config.json');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -12,6 +15,13 @@ module.exports = {
 			fr : "La meilleure façon de commencer la journée !"
 		}),
 	async execute(interaction) {
+		 //temporary solution to get the language of the server from the database
+        //but if it work, it work
+        let con = createConnection(config.mysql);
+
+        con.connect(err => {
+        if (err) return console.log(err);
+        });
 		function toTimestamp(strDate){
 			var datum = Date.parse(strDate);
 			return datum/1000;
@@ -343,36 +353,39 @@ module.exports = {
 		await interaction.channel.send({content: `> 🎶 ${lyrics[Response1]}`, components: [row1]})
 		await interaction.channel.send("‎ \n");
 
-		await axios.get(
-			`https://api.openweathermap.org/data/2.5/weather?q=s%C3%A9lestat&units=metric&appid=765dcb23ac7f169979510edfb94ea26b`)
-		.then(response => {
-			let apiData = response;
-			let currentTemp = Math.ceil(apiData.data.main.temp)
-			let maxTemp = apiData.data.main.temp_max;
-			let minTemp = apiData.data.main.temp_min;
-			let humidity = apiData.data.main.humidity;
-			let wind = apiData.data.wind.speed;
-			let icon = apiData.data.weather[0].icon
-			let country = apiData.data.sys.country
-			let pressure = apiData.data.main.pressure;
-			let cloudness = apiData.data.weather[0].description;
-			const weather_embed = new EmbedBuilder()
-			.setColor(0x0099FF)
-			.setTitle('__Météo du jour__')
-			.setDescription(`The weather at Sélestat is ${cloudness} !`)
-			.addFields(
-				{ name: 'Température actuelle', value: `${Math.round(currentTemp)} °C`, inline: true },
-				{ name: 'Température maximale', value: `${Math.round(maxTemp)} °C`, inline: true },
-				{ name: 'Température minimale', value: `${Math.round(minTemp)} °C`, inline: true },
-				{ name: `Taux d'humidité`, value: `${humidity} %`, inline: true },
-				{ name: `Vitesse du vent`, value: `${Math.round(wind)} m/s`, inline: true },
-				{ name: `Pression atmosphérique`, value: `${Math.round(pressure)} hPa`, inline: true },
-			)
-			.setTimestamp()
-			.setFooter({ text: 'Made by Rayreth with 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' });
-			interaction.channel.send({ embeds: [weather_embed] })
-		})
-			await interaction.channel.send("‎ \n");
-			await interaction.channel.send("Bonne journée :saluting_face: !")
+		con.query(`SELECT * FROM server WHERE server_id = '${interaction.guild.id}'`, async (err, rows) => {
+			const city = rows[0].city;
+			await axios.get(
+				`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`)
+			.then(response => {
+				let apiData = response;
+				let currentTemp = Math.ceil(apiData.data.main.temp)
+				let maxTemp = apiData.data.main.temp_max;
+				let minTemp = apiData.data.main.temp_min;
+				let humidity = apiData.data.main.humidity;
+				let wind = apiData.data.wind.speed;
+				let icon = apiData.data.weather[0].icon
+				let country = apiData.data.sys.country
+				let pressure = apiData.data.main.pressure;
+				let cloudness = apiData.data.weather[0].description;
+				const weather_embed = new EmbedBuilder()
+				.setColor(0x0099FF)
+				.setTitle('__Météo du jour__')
+				.setDescription(`The weather at ${city} is ${cloudness} !`)
+				.addFields(
+					{ name: 'Température actuelle', value: `${Math.round(currentTemp)} °C`, inline: true },
+					{ name: 'Température maximale', value: `${Math.round(maxTemp)} °C`, inline: true },
+					{ name: 'Température minimale', value: `${Math.round(minTemp)} °C`, inline: true },
+					{ name: `Taux d'humidité`, value: `${humidity} %`, inline: true },
+					{ name: `Vitesse du vent`, value: `${Math.round(wind)} m/s`, inline: true },
+					{ name: `Pression atmosphérique`, value: `${Math.round(pressure)} hPa`, inline: true },
+				)
+				.setTimestamp()
+				.setFooter({ text: 'Made by Rayreth with 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' });
+				interaction.channel.send({ embeds: [weather_embed] })
+				interaction.channel.send("‎ \n");
+			    interaction.channel.send("Bonne journée :saluting_face: !")
+			})
+		})	
 	},
 };
