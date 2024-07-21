@@ -2,6 +2,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits,InteractionResponse, ButtonBuilder, ButtonStyle, ActionRowBuilder, EmbedBuilder } = require('discord.js');
 const { token } = require('./config.json');
+const { createConnection } = require('mysql');
+const config = require('./config.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
@@ -251,8 +253,34 @@ client.on(Events.InteractionCreate, async interaction => {
 			const Response1 = Math.floor(Math.random() * lyrics.length);
 			await interaction.reply({content: `> 🎶 ${lyrics[Response1]}`, components: [row1]})
 		}
-	}		
+	}
+	else if (interaction.isStringSelectMenu()){
+		if(interaction.customId === "languages"){
+		//update the language of the server in the database
+		if(interaction.values == "en"){
+			con.query(`UPDATE server SET languages = 'en' WHERE server_id = '${interaction.guild.id}'`, (err, rows) => {
+				if (err) return console.log(err);
+				interaction.reply({ content: "Language set to English !", ephemeral: true });
+			});
+		}
+		else if(interaction.values == "fr"){
+			con.query(`UPDATE server SET languages = 'fr' WHERE server_id = '${interaction.guild.id}'`, (err, rows) => {
+				if (err) return console.log(err);
+				interaction.reply({ content: "La langue a été définie en Français !", ephemeral: true });
+			});
+		}
+}
+}
 });
+
+let con = createConnection(config.mysql);
+
+con.connect(err => {
+    if (err) return console.log(err);
+    console.log(`MySQL has been connected!`);
+});
+
+module.exports = con;
 
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
@@ -260,6 +288,9 @@ client.once(Events.ClientReady, readyClient => {
 });
 
 client.once(Events.GuildCreate, guild => {
+	con.query(`INSERT INTO server (server_id, owner_id, languages) VALUES ('${guild.id}', '${guild.ownerId}', 'en')`, (err, rows) => {
+		if (err) return console.log(err);
+	});
 	const em_log_add = new EmbedBuilder()
 	.setTitle("__Nouveau serveur__")
 	.addFields(
@@ -278,6 +309,9 @@ client.once(Events.GuildCreate, guild => {
 });
 
 client.once(Events.GuildDelete, guild => {
+	con.query(`DELETE FROM server WHERE server_id = '${guild.id}'`, (err, rows) => {
+		if (err) return console.log(err);
+	});
 	const em_log_remove = new EmbedBuilder()
 	.setTitle("__Serveur retiré__")
 	.addFields(
