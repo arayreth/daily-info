@@ -1,6 +1,6 @@
 const { SlashCommandBuilder, InteractionResponse, ButtonBuilder, ButtonStyle, ActionRowBuilder, EmbedBuilder} = require('discord.js');
-const { createConnection } = require('mysql');
 const config = require('../../config.json');
+const con = require('../../database.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -13,13 +13,6 @@ module.exports = {
             fr : "Obtenez de l'aide pour le bot."
         }),
 	async execute(interaction) {
-        //temporary solution to get the language of the server from the database
-        //but if it work, it work
-        let con = createConnection(config.mysql);
-
-        con.connect(err => {
-        if (err) return console.log(err);
-        });
         con.query(`SELECT * FROM server where server_id = ${interaction.guild.id}`, (err, rows) => {
         if(err) throw err;
         if(rows[0].languages === "en"){

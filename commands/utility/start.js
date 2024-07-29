@@ -1,8 +1,8 @@
 const { SlashCommandBuilder, InteractionResponse, ButtonBuilder, ButtonStyle, ActionRowBuilder, EmbedBuilder} = require('discord.js');
 const axios = require('axios')
 const { apiKey } = require('../../config.json')
-const { createConnection } = require('mysql');
 const config = require('../../config.json');
+const con = require('../../database.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -15,13 +15,6 @@ module.exports = {
 			fr : "La meilleure façon de commencer la journée !"
 		}),
 	async execute(interaction) {
-		 //temporary solution to get the language of the server from the database
-        //but if it work, it work
-        let con = createConnection(config.mysql);
-
-        con.connect(err => {
-        if (err) return console.log(err);
-        });
 		function toTimestamp(strDate){
 			var datum = Date.parse(strDate);
 			return datum/1000;

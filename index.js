@@ -5,6 +5,14 @@ const { token, apiKey } = require('./config.json');
 const { createConnection } = require('mysql');
 const config = require('./config.json');
 const axios = require('axios');
+const con = require('./database.js');
+//const { Database} = require('better-sqlite3');
+
+//const db = new Database(config.mysql).then(() => {
+//	console.log("Connected to the database !");
+//}).catch((error) => {
+//	console.log("Error while connecting to the database : " + error);
+//});
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
@@ -221,14 +229,7 @@ client.on(Events.InteractionCreate, async interaction => {
 }
 });
 
-let con = createConnection(config.mysql);
-
-con.connect(err => {
-    if (err) return console.log(err);
-    console.log(`MySQL has been connected!`);
-});
-
-module.exports = con;
+//const con = connection.connect();
 
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
