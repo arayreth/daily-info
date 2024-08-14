@@ -31,7 +31,7 @@ We reserve the right to terminate or suspend your access to the Bot at our discr
 We may update these Terms from time to time. When we do, we will notify you by updating the "Last updated" date at the top of this document. Your continued use of the Bot after any changes constitutes your acceptance of the new Terms.
 
 ## 8. Contact Information
-If you have any questions or concerns about these Terms, please contact us at https://discord.gg/tNNppxGnj2
+If you have any questions or concerns about these Terms, please contact us at https://discord.gg/tNNppxGnj2 or https://discord.com/users/477869784932024321.
 
 ---
 
