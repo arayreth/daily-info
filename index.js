@@ -6,13 +6,7 @@ const { createConnection } = require('mysql');
 const config = require('./config.json');
 const axios = require('axios');
 const con = require('./database.js');
-//const { Database} = require('better-sqlite3');
-
-//const db = new Database(config.mysql).then(() => {
-//	console.log("Connected to the database !");
-//}).catch((error) => {
-//	console.log("Error while connecting to the database : " + error);
-//});
+const { default: DiscordAnalytics } = require("discord-analytics/discordjs")
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
@@ -36,6 +30,7 @@ for (const folder of commandFolders) {
 
 client.on(Events.InteractionCreate, async interaction => {
 	if (interaction.isChatInputCommand()){
+	if(!interaction.guild){ interaction.reply({ content: "❌ You need to be on a server to use this command !", ephemeral: true }); return; }	
 
 	const command = interaction.client.commands.get(interaction.commandName);
 
@@ -226,10 +221,32 @@ client.on(Events.InteractionCreate, async interaction => {
 	if (err) return console.log(err);
     });
 }
+	if(interaction.customId === "en_suggestquote"){
+		const quote = interaction.fields.getTextInputValue('en_quote');
+		const author = interaction.fields.getTextInputValue('en_author');
+		con.query(`INSERT INTO t_quotes (quotes, author, languages) VALUES ('${quote}', '- ${author}', 'en')`, (err, rows) => {
+			if (err) return console.log(err);
+		});
+		interaction.reply({ content: "✅ Quote successfully proposed !", ephemeral: true });
+	}
+	else if(interaction.customId === "fr_suggestquote"){
+		const quote = interaction.fields.getTextInputValue('fr_quote');
+		const author = interaction.fields.getTextInputValue('fr_author');
+		con.query(`INSERT INTO t_quotes (quotes, author, languages) VALUES ('${quote}', '- ${author}', 'fr')`, (err, rows) => {
+			if (err) return console.log(err);
+		});
+		interaction.reply({ content: "✅ Citation proposée avec succès !", ephemeral: true });
+	}
 }
 });
 
-//const con = connection.connect();
+const analytics = new DiscordAnalytics({
+	client: client,
+	apiToken: config.api_token,
+	sharded: false
+  });
+  
+analytics.trackEvents();
 
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
