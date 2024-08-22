@@ -29,7 +29,6 @@ module.exports = {
 
         const row = new ActionRowBuilder()
         .addComponents(s_languages);
-        // if this commands is on mp reply "you need to be on a server to use this command"
         if(!interaction.guild){
             interaction.reply({ content: "❌ You need to be on a server to use this command !", ephemeral: true })
         } else {

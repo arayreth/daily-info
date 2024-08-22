@@ -27,6 +27,7 @@ module.exports = {
             { name: "</support:1274406267112259618>", value: "Get the bot support discord server." },
             { name: "</weather:1267781177511641139>", value: "Suggest a quote to add to the bot." },
             { name: "</suggestquote:1275120940157501576>", value: "Suggest a quote to add to the bot." },
+            { name: "</topauthors:1267423110211047496>", value: "Get the ranking of authors with the most citations." },
            ) 
            .setTimestamp()
            .setFooter({ text: 'Made by Rayreth with 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' });
@@ -43,6 +44,7 @@ module.exports = {
             { name: "</support:1274406267112259618>", value: "Obtenez le serveur de support du bot." },
             { name: "</weather:1267781177511641139>", value: "Obtenez la météo d'une ville." },
             { name: "</suggestquote:1275120940157501576>", value: "Suggérer une citation à ajouter au bot." },
+            { name: "</topauthors:1267423110211047496>", value: "Obtenez le classement des auteurs ayant le plus de citations." },
             )
             .setTimestamp()
             .setFooter({ text: 'Fait par Rayreth avec 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' })

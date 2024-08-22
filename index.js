@@ -197,9 +197,9 @@ client.on(Events.InteractionCreate, async interaction => {
 		.then(response => {
 			let apiData = response;
 			let city = apiData.data.name;
-			interaction.reply({ content: `The weather has been found for the city : ${city} !`, ephemeral: true})
+			interaction.reply({ content: `✅ The weather has been found for the city : ${city} !`, ephemeral: true})
 		}).catch(error => {
-		interaction.reply({ content: "Please indicate a valid city !", ephemeral: true });
+		interaction.reply({ content: "❌ Please indicate a valid city !", ephemeral: true });
 		})
 		con.query(`UPDATE server SET city = '${city}' WHERE server_id = '${interaction.guild.id}'`, (err, rows) => {
 			if (err) return console.log(err);
@@ -212,10 +212,10 @@ client.on(Events.InteractionCreate, async interaction => {
 	.then(response => {
 		let apiData = response;
 		let ville = apiData.data.name;
-		interaction.reply({ content: `La météo a été trouvée pour la ville : ${ville} !`, ephemeral: true})
+		interaction.reply({ content: `✅ La météo a été trouvée pour la ville : ${ville} !`, ephemeral: true})
 	}
 ).catch(error => {
-	interaction.reply({ content: "Merci d'indiquer une ville valide !", ephemeral: true });
+	interaction.reply({ content: "❌ Merci d'indiquer une ville valide !", ephemeral: true });
 })
     con.query(`UPDATE server SET city = '${ville}' WHERE server_id = '${interaction.guild.id}'`, (err, rows) => {
 	if (err) return console.log(err);
