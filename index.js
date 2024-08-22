@@ -157,7 +157,31 @@ client.on(Events.InteractionCreate, async interaction => {
 		m_ville.addComponents(row)
 		await interaction.showModal(m_ville)
 	}
-}
+	else if(interaction.customId === "q_validate"){
+		const m_id = new ModalBuilder()
+		.setCustomId('m_id_validate')
+		.setTitle('Quote validation')
+		const id = new TextInputBuilder()
+		.setCustomId('id')
+		.setLabel("Enter the id of the quote to validate")
+		.setStyle(TextInputStyle.Short)
+		const row = new ActionRowBuilder().addComponents(id)
+		m_id.addComponents(row)
+		interaction.showModal(m_id)
+	}
+	else if(interaction.customId === "q_refuse"){
+		const m_id = new ModalBuilder()
+		.setCustomId('m_id_refuse')
+		.setTitle('Quote refusal')
+		const id = new TextInputBuilder()
+		.setCustomId('id')
+		.setLabel("Enter the id of the quote to refuse")
+		.setStyle(TextInputStyle.Short)
+		const row = new ActionRowBuilder().addComponents(id)
+		m_id.addComponents(row)
+		interaction.showModal(m_id)
+	}
+	}
 	else if (interaction.isStringSelectMenu()){
 		if(interaction.customId === "languages"){
 		if(interaction.values == "en"){
@@ -224,18 +248,81 @@ client.on(Events.InteractionCreate, async interaction => {
 	if(interaction.customId === "en_suggestquote"){
 		const quote = interaction.fields.getTextInputValue('en_quote');
 		const author = interaction.fields.getTextInputValue('en_author');
-		con.query(`INSERT INTO t_quotes (quotes, author, languages) VALUES ('${quote}', '- ${author}', 'en')`, (err, rows) => {
+		con.query(`INSERT INTO t_quotes (quotes, author, languages, user_id) VALUES ('${quote}', '- ${author}', 'en',${interaction.user.id})`, (err, rows) => {
 			if (err) return console.log(err);
 		});
-		interaction.reply({ content: "✅ Quote successfully proposed !", ephemeral: true });
+		const b_en_validate = new ButtonBuilder()
+		.setCustomId("q_validate")
+		.setEmoji("✅")
+		.setLabel("Accept the quote")
+		.setStyle(ButtonStyle.Success);
+		const b_en_refuse = new ButtonBuilder()
+		.setCustomId("q_refuse")
+		.setEmoji("❎")
+		.setLabel("Refuse the quote")
+		.setStyle(ButtonStyle.Danger);
+		const row = new ActionRowBuilder()
+		.addComponents(b_en_validate, b_en_refuse);
+		//send the quote id to the channel
+		con.query(`SELECT * FROM t_quotes WHERE user_id = ${interaction.user.id}`, (err, rows) => {
+			if (err) return console.log(err);
+			const quote = rows[0].quotes;
+			const author = rows[0].author;
+			const id = rows[0].id;
+			client.channels.cache.get("1276222341633933323").send({ content: `New quote (id: ${id} proposed by ${interaction.user.globalName} :\n> ${quote}\n- ${author}`, components : [row]}).catch((error) => {console.log(`Could not send a message to the channel for the ${quote} - ${author} in english by ${interaction.user.globalName}.`)});	
+			interaction.reply({ content: "✅ Quote successfully proposed !", ephemeral: true });
+		});
 	}
 	else if(interaction.customId === "fr_suggestquote"){
 		const quote = interaction.fields.getTextInputValue('fr_quote');
 		const author = interaction.fields.getTextInputValue('fr_author');
-		con.query(`INSERT INTO t_quotes (quotes, author, languages) VALUES ('${quote}', '- ${author}', 'fr')`, (err, rows) => {
+		con.query(`INSERT INTO t_quotes (quotes, author, languages, user_id) VALUES ('${quote}', '- ${author}', 'fr',${interaction.user.id})`, (err, rows) => {
 			if (err) return console.log(err);
 		});
-		interaction.reply({ content: "✅ Citation proposée avec succès !", ephemeral: true });
+		const b_fr_validate = new ButtonBuilder()
+		.setCustomId("q_validate")
+		.setEmoji("✅")
+		.setLabel("Accept the quote")
+		.setStyle(ButtonStyle.Success);
+		const b_fr_refuse = new ButtonBuilder()
+		.setCustomId("q_refuse")
+		.setEmoji("❎")
+		.setLabel("Refuse the quote")
+		.setStyle(ButtonStyle.Danger);
+		const row = new ActionRowBuilder()
+		.addComponents(b_fr_validate, b_fr_refuse);
+		//send the quote id to the channel
+		con.query(`SELECT * FROM t_quotes WHERE user_id = ${interaction.user.id}`, (err, rows) => {
+			if (err) return console.log(err);
+			const quote = rows[0].quotes;
+			const author = rows[0].author;
+			const id = rows[0].id;
+			client.channels.cache.get("1276222341633933323").send({ content: `New quote (id: ${id} proposed by ${interaction.user.globalName} :\n> ${quote}\n- ${author}`, components : [row]}).catch((error) => {console.log(`Could not send a message to the channel for the ${quote} - ${author} in french by ${interaction.user.globalName}.`)});
+			interaction.reply({ content: "✅ Citation proposée avec succès !", ephemeral: true });
+		});
+	}
+	else if(interaction.customId === "m_id_validate"){
+		const id = interaction.fields.getTextInputValue('id');
+		con.query(`SELECT * FROM t_quotes WHERE id = ${id}`, (err, rows) => {
+			if (err) return console.log(err);
+			const quote = rows[0].quotes;
+			const author = rows[0].author;
+			const languages = rows[0].languages;
+			con.query(`INSERT INTO quotes (quotes, author, languages) VALUES ('${quote}', '${author}', '${languages}')`, (err, rows) => {
+				if (err) return console.log(err);
+			});
+			con.query(`DELETE FROM t_quotes WHERE id = ${id}`, (err, rows) => {
+				if (err) return console.log(err);
+			});
+			interaction.reply({ content: "✅ Quote successfully validated !", ephemeral: true });
+		});
+	}
+	else if(interaction.customId === "m_id_refuse"){
+		const id = interaction.fields.getTextInputValue('id');
+		con.query(`DELETE FROM t_quotes WHERE id = ${id}`, (err, rows) => {
+			if (err) return console.log(err);
+		});
+		interaction.reply({ content: "✅ Quote successfully refused !", ephemeral: true });
 	}
 }
 });
