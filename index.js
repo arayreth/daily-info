@@ -324,7 +324,25 @@ client.on(Events.InteractionCreate, async interaction => {
 		});
 		interaction.reply({ content: "✅ Quote successfully refused !", ephemeral: true });
 	}
-}
+	else if(interaction.customId === "en_reviews"){
+		const username = interaction.fields.getTextInputValue('en_username');
+		const review = interaction.fields.getTextInputValue('en_review');
+		con.query(`INSERT INTO reviews (user_id, username, reviews, languages) VALUES ('${interaction.user.id}','${username}', '${review}', 'en')`, (err, rows) => {
+			if (err) return console.log(err);
+		});
+		client.channels.cache.get("1276473701537419274").send("New review in English !\n> " + review + "\n- " + username).catch((error) => {console.log("Could not send a message to the channel for the review in English.")});
+		interaction.reply({ content: "✅ Review successfully sent !", ephemeral: true });
+	}
+	else if(interaction.customId === "fr_reviews"){
+		const username = interaction.fields.getTextInputValue('fr_username');
+		const review = interaction.fields.getTextInputValue('fr_review');
+		con.query(`INSERT INTO reviews (user_id, username, reviews, languages) VALUES ('${interaction.user.id}','${username}', '${review}', 'fr')`, (err, rows) => {
+			if (err) return console.log(err);
+		});
+		client.channels.cache.get("1276473701537419274").send("Nouvel avis en Français !\n> " + review + "\n- " + username).catch((error) => {console.log("Could not send a message to the channel for the review in French.")});
+		interaction.reply({ content: "✅ Avis envoyé avec succès !", ephemeral: true });
+	}
+   }
 });
 
 const analytics = new DiscordAnalytics({
