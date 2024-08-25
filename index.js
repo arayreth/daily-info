@@ -48,14 +48,8 @@ client.on(Events.InteractionCreate, async interaction => {
 	} catch (error) {
 		console.error(error);
 		if (interaction.replied || interaction.deferred) {
-			fs.appendFile('log.txt',`${moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a')} : ${interaction.user.globalName} à rencontré une erreur en utilisant la commande ${interaction.commandName} sur le serveur ${interaction.guild.name} : ${error}\n`, (err) => {
-				if (err) throw err;
-			});
 			await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
 		} else {
-			fs.appendFile('log.txt',`${moment(Date.now()).format('MMMM Do YYYY, h:mm:ss a')} : ${interaction.user.globalName} à rencontré une erreur en utilisant la commande ${interaction.commandName} sur le serveur ${interaction.guild.name} : ${error}\n`, (err) => {
-				if (err) throw err;
-			});
 			await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
 		}
 	}
