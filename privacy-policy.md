@@ -10,6 +10,7 @@ When you use the Bot, we may collect the following types of information:
 
 - **Server and User IDs:** We may collect your Discord user ID, server ID, and channel ID to ensure the Bot functions correctly and delivers the right information to the right place.
 - **Inputs:** Any inputs provided to the Bot may be temporarily processed to respond to your requests.
+- **Command Logs:** We may log all commands issued to the Bot for troubleshooting and security purposes. These logs include the command itself and associated metadata (e.g., timestamps, user ID, server ID).
 
 ## 3. How We Use Your Information
 The information we collect is used solely for the following purposes:
@@ -25,7 +26,7 @@ We do not share, sell, or disclose your information to third parties, except in 
 
 ## 5. Data Storage and Security
 - **Storage:** We store certain data, including server IDs and language preferences, to ensure the Bot operates effectively within your server. This data is stored in our database and is used to maintain your settings and improve the Bot's functionality. We do not store any other user data beyond what is necessary for the Bot's operation.
-- **Security Measures:** We implement reasonable security measures to protect your data from unauthorized access or disclosure. However, no method of transmission over the internet or electronic storage is completely secure.
+- **Security Measures:** We implement reasonable security measures to protect your data from unauthorized access or disclosure. However, no method of transmission over the internet or electronic storage is completely secure. Command logs will only be accessible by the Bot's owner for troubleshooting and security purposes.
 
 ## 6. Your Rights
 As a user, you have the following rights regarding your data:
