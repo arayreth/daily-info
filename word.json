@@ -1,0 +1,897 @@
+[
+    {
+        "word": "Serendipity",
+        "description": "The occurrence of events by chance in a happy or beneficial way.",
+        "language": "en"
+    },
+    {
+        "word": "Ephemeral",
+        "description": "Lasting for a very short time; fleeting.",
+        "language": "en"
+    },
+    {
+        "word": "Benevolent",
+        "description": "Well-meaning and kindly; showing goodwill.",
+        "language": "en"
+    },
+    {
+        "word": "Solitude",
+        "description": "The state of being alone, often by choice and with a peaceful mind.",
+        "language": "en"
+    },
+    {
+        "word": "Quintessential",
+        "description": "Representing the most perfect or typical example of a quality or class.",
+        "language": "en"
+    },
+    {
+        "word": "Eloquent",
+        "description": "Fluent or persuasive in speaking or writing.",
+        "language": "en"
+    },
+    {
+        "word": "Melancholy",
+        "description": "A deep, persistent sadness or sorrow, often with a reflective or contemplative nature.",
+        "language": "en"
+    },
+    {
+        "word": "Ineffable",
+        "description": "Too great or extreme to be expressed in words.",
+        "language": "en"
+    },
+    {
+        "word": "Luminescence",
+        "description": "The emission of light by a substance not resulting from heat; glowing.",
+        "language": "en"
+    },
+    {
+        "word": "Ethereal",
+        "description": "Extremely delicate and light in a way that seems too perfect for this world.",
+        "language": "en"
+    },
+    {
+        "word": "Labyrinth",
+        "description": "A complex, confusing network of pathways; a maze.",
+        "language": "en"
+    },
+    {
+        "word": "Tranquility",
+        "description": "The quality or state of being calm and peaceful.",
+        "language": "en"
+    },
+    {
+        "word": "Euphoria",
+        "description": "A feeling or state of intense excitement and happiness.",
+        "language": "en"
+    },
+    {
+        "word": "Crescendo",
+        "description": "A gradual increase in loudness or intensity.",
+        "language": "en"
+    },
+    {
+        "word": "Idyllic",
+        "description": "Extremely happy, peaceful, or picturesque, especially in a rustic way.",
+        "language": "en"
+    },
+    {
+        "word": "Eloquence",
+        "description": "The art of using language in an apt, fluent way to persuade or move others.",
+        "language": "en"
+    },
+    {
+        "word": "Reverie",
+        "description": "A state of being pleasantly lost in one's thoughts; a daydream.",
+        "language": "en"
+    },
+    {
+        "word": "Ambivalence",
+        "description": "The state of having mixed feelings or contradictory ideas about something or someone.",
+        "language": "en"
+    },
+    {
+        "word": "Luminous",
+        "description": "Emitting or reflecting light, especially in the dark; glowing.",
+        "language": "en"
+    },
+    {
+        "word": "Eclipse",
+        "description": "The obscuring of the light from one celestial body by the passage of another between it and the observer.",
+        "language": "en"
+    },
+    {
+        "word": "Gossamer",
+        "description": "A fine, filmy substance consisting of cobwebs spun by small spiders, or something very light, thin, and delicate.",
+        "language": "en"
+    },
+    {
+        "word": "Paradox",
+        "description": "A statement or proposition that, despite sound reasoning, leads to a conclusion that seems senseless, logically unacceptable, or self-contradictory.",
+        "language": "en"
+    },
+    {
+        "word": "Nostalgia",
+        "description": "A sentimental longing or wistful affection for the past, typically for a period or place with happy personal associations.",
+        "language": "en"
+    },
+    {
+        "word": "Epiphany",
+        "description": "A moment of sudden and great revelation or realization.",
+        "language": "en"
+    },
+    {
+        "word": "Infinite",
+        "description": "Limitless or endless in space, extent, or size; impossible to measure or calculate.",
+        "language": "en"
+    },
+    {
+        "word": "Halcyon",
+        "description": "Denoting a period of time in the past that was idyllically happy and peaceful.",
+        "language": "en"
+    },
+    {
+        "word": "Effervescent",
+        "description": "Giving off bubbles; fizzy. Also used metaphorically to describe a lively or enthusiastic personality.",
+        "language": "en"
+    },
+    {
+        "word": "Solstice",
+        "description": "Either of the two times in the year when the sun is at its greatest distance from the celestial equator, resulting in the longest and shortest days.",
+        "language": "en"
+    },
+    {
+        "word": "Serene",
+        "description": "Calm, peaceful, and untroubled; tranquil.",
+        "language": "en"
+    },
+    {
+        "word": "Resonance",
+        "description": "The quality in a sound of being deep, full, and reverberating; also refers to the reinforcement or prolongation of sound.",
+        "language": "en"
+    },
+    {
+        "word": "Ephemeral",
+        "description": "Lasting for a very short time.",
+        "language": "en"
+    },
+    {
+        "word": "Labyrinthine",
+        "description": "Like a labyrinth; irregular and twisting.",
+        "language": "en"
+    },
+    {
+        "word": "Aurora",
+        "description": "A natural light display in the Earth's sky, typically seen in high-latitude regions.",
+        "language": "en"
+    },
+    {
+        "word": "Cascade",
+        "description": "A process whereby something, typically information or knowledge, is successively passed on; also refers to a small waterfall.",
+        "language": "en"
+    },
+    {
+        "word": "Nebula",
+        "description": "A cloud of gas and dust in space, sometimes illuminated by stars.",
+        "language": "en"
+    },
+    {
+        "word": "Mellifluous",
+        "description": "A sound that is sweet and smooth, pleasing to hear.",
+        "language": "en"
+    },
+    {
+        "word": "Vellichor",
+        "description": "The strange wistfulness of used bookstores, which are somehow infused with the passage of time.",
+        "language": "en"
+    },
+    {
+        "word": "Sonder",
+        "description": "The realization that each passerby has a life as vivid and complex as your own.",
+        "language": "en"
+    },
+    {
+        "word": "Éphémère",
+        "description": "Qui dure très peu de temps; fugace.",
+        "language": "fr"
+    },
+    {
+        "word": "Bénévole",
+        "description": "Bienveillant et plein de bonnes intentions; montrant de la gentillesse.",
+        "language": "fr"
+    },
+    {
+        "word": "Solitude",
+        "description": "L'état d'être seul, souvent par choix et avec un esprit paisible.",
+        "language": "fr"
+    },
+    {
+        "word": "Quintessence",
+        "description": "Représentant l'exemple le plus parfait ou typique d'une qualité ou d'une classe.",
+        "language": "fr"
+    },
+    {
+        "word": "Éloquent",
+        "description": "Fluent ou persuasif dans le discours ou l'écriture.",
+        "language": "fr"
+    },
+    {
+        "word": "Mélancolie",
+        "description": "Une tristesse profonde et persistante, souvent avec une nature réfléchie ou contemplative.",
+        "language": "fr"
+    },
+    {
+        "word": "Inexprimable",
+        "description": "Trop grand ou extrême pour être exprimé en mots.",
+        "language": "fr"
+    },
+    {
+        "word": "Luminescence",
+        "description": "L'émission de lumière par une substance sans résultat de chaleur; lumineux.",
+        "language": "fr"
+    },
+    {
+        "word": "Éthéré",
+        "description": "Extrêmement délicat et léger d'une manière qui semble trop parfaite pour ce monde.",
+        "language": "fr"
+    },
+    {
+        "word": "Labyrinthe",
+        "description": "Un réseau complexe et confus de voies; un dédale.",
+        "language": "fr"
+    },
+    {
+        "word": "Tranquillité",
+        "description": "La qualité ou l'état d'être calme et paisible.",
+        "language": "fr"
+    },
+    {
+        "word": "Euphorie",
+        "description": "Un sentiment ou un état d'excitation intense et de bonheur.",
+        "language": "fr"
+    },
+    {
+        "word": "Crescendo",
+        "description": "Une augmentation progressive du volume ou de l'intensité.",
+        "language": "fr"
+    },
+    {
+        "word": "Idyllique",
+        "description": "Extrêmement heureux, paisible, ou pittoresque, surtout d'une manière rustique.",
+        "language": "fr"
+    },
+    {
+        "word": "Éloquence",
+        "description": "L'art d'utiliser le langage de manière appropriée et fluide pour persuader ou émouvoir les autres.",
+        "language": "fr"
+    },
+    {
+        "word": "Rêverie",
+        "description": "Un état de douce rêverie ou de contemplation; un rêve éveillé.",
+        "language": "fr"
+    },
+    {
+        "word": "Ambivalence",
+        "description": "L'état d'avoir des sentiments mixtes ou des idées contradictoires sur quelque chose ou quelqu'un.",
+        "language": "fr"
+    },
+    {
+        "word": "Lumineux",
+        "description": "Émettant ou réfléchissant de la lumière, surtout dans l'obscurité; lumineux.",
+        "language": "fr"
+    },
+    {
+        "word": "Éclipse",
+        "description": "L'obscurcissement de la lumière d'un corps céleste par le passage d'un autre entre lui et l'observateur.",
+        "language": "fr"
+    },
+    {
+        "word": "Diaphane",
+        "description": "Une substance très légère et délicate, souvent comparée à une toile d'araignée.",
+        "language": "fr"
+    },
+    {
+        "word": "Paradoxe",
+        "description": "Une déclaration ou une proposition qui, malgré un raisonnement solide, mène à une conclusion qui semble insensée ou auto-contradictoire.",
+        "language": "fr"
+    },
+    {
+        "word": "Nostalgie",
+        "description": "Un désir sentimental ou une affection mélancolique pour le passé, typiquement pour une période ou un lieu avec des associations personnelles heureuses.",
+        "language": "fr"
+    },
+    {
+        "word": "Épiphanie",
+        "description": "Un moment de révélation ou de réalisation soudain et grandiose.",
+        "language": "fr"
+    },
+    {
+        "word": "Infini",
+        "description": "Illimité ou sans fin dans l'espace, l'étendue ou la taille; impossible à mesurer ou à calculer.",
+        "language": "fr"
+    },
+    {
+        "word": "Halcéon",
+        "description": "Désignant une période du passé qui était idylliquement heureuse et paisible.",
+        "language": "fr"
+    },
+    {
+        "word": "Effervescent",
+        "description": "Produisant des bulles; pétillant. Aussi utilisé métaphoriquement pour décrire une personnalité vive ou enthousiaste.",
+        "language": "fr"
+    },
+    {
+        "word": "Solstice",
+        "description": "L'un des deux moments de l'année où le soleil est à sa plus grande distance de l'équateur céleste, entraînant les jours les plus longs et les plus courts.",
+        "language": "fr"
+    },
+    {
+        "word": "Serein",
+        "description": "Calme, paisible et sans trouble; tranquille.",
+        "language": "fr"
+    },
+    {
+        "word": "Résonance",
+        "description": "La qualité d'un son d'être profond, plein et réverbérant; se réfère également au renforcement ou à la prolongation du son.",
+        "language": "fr"
+    },
+    {
+        "word": "Éphémère",
+        "description": "Durant très peu de temps.",
+        "language": "fr"
+    },
+    {
+        "word": "Labyrinthique",
+        "description": "Comme un labyrinthe; irrégulier et sinueux.",
+        "language": "fr"
+    },
+    {
+        "word": "Aurore",
+        "description": "Un phénomène lumineux naturel dans le ciel terrestre, généralement observé dans les régions à haute latitude.",
+        "language": "fr"
+    },
+    {
+        "word": "Cascade",
+        "description": "Un processus par lequel quelque chose, typiquement des informations ou des connaissances, est successivement transmis; se réfère aussi à une petite chute d'eau.",
+        "language": "fr"
+    },
+    {
+        "word": "Nébuleuse",
+        "description": "Un nuage de gaz et de poussière dans l'espace, parfois illuminé par des étoiles.",
+        "language": "fr"
+    },
+    {
+        "word": "Melliflue",
+        "description": "Un son qui est doux et fluide, plaisant à entendre.",
+        "language": "fr"
+    },
+    {
+        "word": "Vellichor",
+        "description": "La mélancolie étrange des librairies d'occasion, qui sont en quelque sorte imprégnées du passage du temps.",
+        "language": "fr"
+    },
+    {
+        "word": "Sonder",
+        "description": "La réalisation que chaque passant a une vie aussi vive et complexe que la vôtre.",
+        "language": "fr"
+    },
+    {
+        "word": "Aplomb",
+        "description": "Self-confidence or assurance, especially when in a demanding situation.",
+        "language": "en"
+    },
+    {
+        "word": "Brevity",
+        "description": "Concise and exact use of words in writing or speech.",
+        "language": "en"
+    },
+    {
+        "word": "Cacophony",
+        "description": "A harsh, discordant mixture of sounds.",
+        "language": "en"
+    },
+    {
+        "word": "Diligent",
+        "description": "Having or showing care and conscientiousness in one's work or duties.",
+        "language": "en"
+    },
+    {
+        "word": "Ephemeral",
+        "description": "Lasting for a very short time.",
+        "language": "en"
+    },
+    {
+        "word": "Fervent",
+        "description": "Having or displaying a passionate intensity.",
+        "language": "en"
+    },
+    {
+        "word": "Gregarious",
+        "description": "Fond of company; sociable.",
+        "language": "en"
+    },
+    {
+        "word": "Harbinger",
+        "description": "A person or thing that announces or signals the approach of another.",
+        "language": "en"
+    },
+    {
+        "word": "Irascible",
+        "description": "Having or showing a tendency to be easily angered.",
+        "language": "en"
+    },
+    {
+        "word": "Juxtaposition",
+        "description": "The fact of two things being seen or placed close together with contrasting effect.",
+        "language": "en"
+    },
+    {
+        "word": "Kaleidoscope",
+        "description": "A constantly changing pattern of colors and shapes.",
+        "language": "en"
+    },
+    {
+        "word": "Lethargic",
+        "description": "Affected by lethargy; sluggish and apathetic.",
+        "language": "en"
+    },
+    {
+        "word": "Mirth",
+        "description": "Great joy, amusement, or happiness.",
+        "language": "en"
+    },
+    {
+        "word": "Nebulous",
+        "description": "In the form of a cloud or haze; hazy.",
+        "language": "en"
+    },
+    {
+        "word": "Ominous",
+        "description": "Giving the impression that something bad or unpleasant is going to happen; threatening.",
+        "language": "en"
+    },
+    {
+        "word": "Pernicious",
+        "description": "Having a harmful effect, especially in a gradual or subtle way.",
+        "language": "en"
+    },
+    {
+        "word": "Quixotic",
+        "description": "Exceedingly idealistic; unrealistic and impractical.",
+        "language": "en"
+    },
+    {
+        "word": "Rudimentary",
+        "description": "Involving or limited to basic principles.",
+        "language": "en"
+    },
+    {
+        "word": "Sycophant",
+        "description": "A person who acts obsequiously toward someone important in order to gain advantage.",
+        "language": "en"
+    },
+    {
+        "word": "Tangible",
+        "description": "Perceptible by touch; capable of being touched or felt.",
+        "language": "en"
+    },
+    {
+        "word": "Ubiquitous",
+        "description": "Present, appearing, or found everywhere.",
+        "language": "en"
+    },
+    {
+        "word": "Vicarious",
+        "description": "Experienced in the imagination through the feelings or actions of another person.",
+        "language": "en"
+    },
+    {
+        "word": "Wistful",
+        "description": "Longing or yearning with a hint of melancholy.",
+        "language": "en"
+    },
+    {
+        "word": "Xenophile",
+        "description": "An individual who is attracted to foreign peoples, cultures, or customs.",
+        "language": "en"
+    },
+    {
+        "word": "Yearning",
+        "description": "A feeling of intense longing or desire.",
+        "language": "en"
+    },
+    {
+        "word": "Zenith",
+        "description": "The time at which something is most powerful or successful.",
+        "language": "en"
+    },
+    {
+        "word": "Aesthetic",
+        "description": "Concerned with beauty or the appreciation of beauty.",
+        "language": "en"
+    },
+    {
+        "word": "Brevity",
+        "description": "The quality of being brief or concise.",
+        "language": "en"
+    },
+    {
+        "word": "Cynosure",
+        "description": "A person or thing that is the center of attention or admiration.",
+        "language": "en"
+    },
+    {
+        "word": "Disparate",
+        "description": "Essentially different in kind; not allowing comparison.",
+        "language": "en"
+    },
+    {
+        "word": "Eloquent",
+        "description": "Fluent or persuasive in speaking or writing.",
+        "language": "en"
+    },
+    {
+        "word": "Frivolous",
+        "description": "Not having any serious purpose or value; carefree.",
+        "language": "en"
+    },
+    {
+        "word": "Genteel",
+        "description": "Polite, refined, or respectable, often in an affected or pretentious way.",
+        "language": "en"
+    },
+    {
+        "word": "Hapless",
+        "description": "Unfortunate or unlucky.",
+        "language": "en"
+    },
+    {
+        "word": "Impudent",
+        "description": "Not showing due respect for another person; impertinent.",
+        "language": "en"
+    },
+    {
+        "word": "Jovial",
+        "description": "Cheerful and friendly.",
+        "language": "en"
+    },
+    {
+        "word": "Keen",
+        "description": "Having or showing eagerness or enthusiasm.",
+        "language": "en"
+    },
+    {
+        "word": "Luminous",
+        "description": "Emitting or reflecting light, especially in the dark.",
+        "language": "en"
+    },
+    {
+        "word": "Maverick",
+        "description": "An independent-minded person.",
+        "language": "en"
+    },
+    {
+        "word": "Nostalgia",
+        "description": "A sentimental longing or wistful affection for the past.",
+        "language": "en"
+    },
+    {
+        "word": "Obsolete",
+        "description": "No longer produced or used; out of date.",
+        "language": "en"
+    },
+    {
+        "word": "Punctilious",
+        "description": "Showing great attention to detail or correct behavior.",
+        "language": "en"
+    },
+    {
+        "word": "Quintessential",
+        "description": "Representing the most perfect or typical example of a quality or class.",
+        "language": "en"
+    },
+    {
+        "word": "Resilient",
+        "description": "Able to withstand or recover quickly from difficult conditions.",
+        "language": "en"
+    },
+    {
+        "word": "Sublime",
+        "description": "Of such excellence, grandeur, or beauty as to inspire great admiration or awe.",
+        "language": "en"
+    },
+    {
+        "word": "Trepidation",
+        "description": "A feeling of fear or agitation about something that may happen.",
+        "language": "en"
+    },
+    {
+        "word": "Unequivocal",
+        "description": "Leaving no doubt; unambiguous.",
+        "language": "en"
+    },
+    {
+        "word": "Voracious",
+        "description": "Wanting or devouring great quantities of food; having a very eager approach to a particular activity.",
+        "language": "en"
+    },
+    {
+        "word": "Whimsical",
+        "description": "Playfully quaint or fanciful, especially in an appealing and amusing way.",
+        "language": "en"
+    },
+    {
+        "word": "Xenial",
+        "description": "Relating to hospitality or relations between host and guest.",
+        "language": "en"
+    },
+    {
+        "word": "Yielding",
+        "description": "Giving way under pressure; not hard or rigid.",
+        "language": "en"
+    },
+    {
+        "word": "Zealous",
+        "description": "Having or showing great enthusiasm in pursuit of a cause or objective.",
+        "language": "en"
+    },
+    {
+        "word": "Aplomb",
+        "description": "Confiance en soi ou assurance, surtout dans une situation exigeante.",
+        "language": "fr"
+    },
+    {
+        "word": "Brièveté",
+        "description": "Utilisation concise et exacte des mots dans l'écriture ou le discours.",
+        "language": "fr"
+    },
+    {
+        "word": "Cacophonie",
+        "description": "Un mélange discordant de sons.",
+        "language": "fr"
+    },
+    {
+        "word": "Diligent",
+        "description": "Ayant ou montrant du soin et de la conscience dans son travail ou ses devoirs.",
+        "language": "fr"
+    },
+    {
+        "word": "Éphémère",
+        "description": "Durant très peu de temps.",
+        "language": "fr"
+    },
+    {
+        "word": "Ardent",
+        "description": "Ayant ou montrant une intensité passionnée.",
+        "language": "fr"
+    },
+    {
+        "word": "Sociable",
+        "description": "Aimant la compagnie des autres; sociable.",
+        "language": "fr"
+    },
+    {
+        "word": "Précurseur",
+        "description": "Une personne ou une chose qui annonce ou signale l'approche de quelque chose d'autre.",
+        "language": "fr"
+    },
+    {
+        "word": "Irascible",
+        "description": "Ayant ou montrant une tendance à être facilement en colère.",
+        "language": "fr"
+    },
+    {
+        "word": "Juxtaposition",
+        "description": "Le fait que deux choses soient vues ou placées côte à côte avec un effet de contraste.",
+        "language": "fr"
+    },
+    {
+        "word": "Kaleidoscope",
+        "description": "Un motif en constante évolution de couleurs et de formes.",
+        "language": "fr"
+    },
+    {
+        "word": "Léthargique",
+        "description": "Affecté par la léthargie; lent et apathique.",
+        "language": "fr"
+    },
+    {
+        "word": "Jubilant",
+        "description": "Exprimant une grande joie, amusement ou bonheur.",
+        "language": "fr"
+    },
+    {
+        "word": "Nébuleux",
+        "description": "Sous la forme d'un nuage ou d'une brume; brumeux.",
+        "language": "fr"
+    },
+    {
+        "word": "Ominieux",
+        "description": "Donnant l'impression que quelque chose de mauvais ou désagréable est sur le point de se produire; menaçant.",
+        "language": "fr"
+    },
+    {
+        "word": "Pernicieux",
+        "description": "Ayant un effet nuisible, surtout de manière graduelle ou subtile.",
+        "language": "fr"
+    },
+    {
+        "word": "Quixotique",
+        "description": "Excessivement idéaliste; irréaliste et impratique.",
+        "language": "fr"
+    },
+    {
+        "word": "Rudimentaire",
+        "description": "Impliquant ou limité aux principes de base.",
+        "language": "fr"
+    },
+    {
+        "word": "Sycophante",
+        "description": "Une personne qui agit de manière obséquieuse envers quelqu'un d'important pour obtenir un avantage.",
+        "language": "fr"
+    },
+    {
+        "word": "Tangible",
+        "description": "Perceptible au toucher; capable d'être touché ou ressenti.",
+        "language": "fr"
+    },
+    {
+        "word": "Ubiquitaire",
+        "description": "Présent, apparaissant ou se trouvant partout.",
+        "language": "fr"
+    },
+    {
+        "word": "Vicarious",
+        "description": "Éprouvé dans l'imagination à travers les sentiments ou les actions d'une autre personne.",
+        "language": "fr"
+    },
+    {
+        "word": "Mélancolique",
+        "description": "Longing or yearning with a hint of melancholy.",
+        "language": "fr"
+    },
+    {
+        "word": "Xénophile",
+        "description": "Un individu attiré par les peuples, les cultures ou les coutumes étrangères.",
+        "language": "fr"
+    },
+    {
+        "word": "Yearning",
+        "description": "Un sentiment de désir intense.",
+        "language": "fr"
+    },
+    {
+        "word": "Zénith",
+        "description": "Le moment où quelque chose est le plus puissant ou réussi.",
+        "language": "fr"
+    },
+    {
+        "word": "Esthétique",
+        "description": "Concernant la beauté ou l'appréciation de la beauté.",
+        "language": "fr"
+    },
+    {
+        "word": "Brevity",
+        "description": "La qualité d'être bref ou concis.",
+        "language": "fr"
+    },
+    {
+        "word": "Cynosure",
+        "description": "Une personne ou une chose qui est le centre de l'attention ou de l'admiration.",
+        "language": "fr"
+    },
+    {
+        "word": "Disparate",
+        "description": "Essentiellement différent en nature; ne permettant pas de comparaison.",
+        "language": "fr"
+    },
+    {
+        "word": "Éloquent",
+        "description": "Fluent ou persuasif dans le discours ou l'écriture.",
+        "language": "fr"
+    },
+    {
+        "word": "Frivole",
+        "description": "Sans but sérieux ou valeur; insouciant.",
+        "language": "fr"
+    },
+    {
+        "word": "Genteel",
+        "description": "Poli, raffiné ou respectable, souvent de manière affectée ou prétentieuse.",
+        "language": "fr"
+    },
+    {
+        "word": "Malchanceux",
+        "description": "Malchanceux ou malheureux.",
+        "language": "fr"
+    },
+    {
+        "word": "Imprudent",
+        "description": "Ne montrant pas le respect dû à une autre personne; impertinent.",
+        "language": "fr"
+    },
+    {
+        "word": "Jovial",
+        "description": "Chaleureux et amical.",
+        "language": "fr"
+    },
+    {
+        "word": "Aiguisé",
+        "description": "Ayant ou montrant de l'enthousiasme ou de l'intérêt.",
+        "language": "fr"
+    },
+    {
+        "word": "Luminescent",
+        "description": "Émettant ou réfléchissant de la lumière, surtout dans l'obscurité.",
+        "language": "fr"
+    },
+    {
+        "word": "Indépendant",
+        "description": "Une personne indépendante.",
+        "language": "fr"
+    },
+    {
+        "word": "Nostalgie",
+        "description": "Un désir sentimental ou une affection mélancolique pour le passé.",
+        "language": "fr"
+    },
+    {
+        "word": "Obsolète",
+        "description": "Plus produit ou utilisé; démodé.",
+        "language": "fr"
+    },
+    {
+        "word": "Punctilieux",
+        "description": "Montrant une grande attention aux détails ou au comportement correct.",
+        "language": "fr"
+    },
+    {
+        "word": "Quintessence",
+        "description": "Représentant l'exemple le plus parfait ou typique d'une qualité ou d'une classe.",
+        "language": "fr"
+    },
+    {
+        "word": "Résilient",
+        "description": "Capable de résister ou de se remettre rapidement de conditions difficiles.",
+        "language": "fr"
+    },
+    {
+        "word": "Sublime",
+        "description": "D'une telle excellence, grandeur ou beauté qu'elle inspire une grande admiration ou crainte.",
+        "language": "fr"
+    },
+    {
+        "word": "Trepidation",
+        "description": "Un sentiment de peur ou d'agitation à propos de quelque chose qui pourrait arriver.",
+        "language": "fr"
+    },
+    {
+        "word": "Équivoque",
+        "description": "Ne laissant aucun doute; sans ambiguïté.",
+        "language": "fr"
+    },
+    {
+        "word": "Vorace",
+        "description": "Souhaitant ou dévorant de grandes quantités de nourriture; ayant une approche très enthousiaste d'une activité particulière.",
+        "language": "fr"
+    },
+    {
+        "word": "Capricieux",
+        "description": "Jouant ou fantaisiste, surtout de manière attrayante et amusante.",
+        "language": "fr"
+    },
+    {
+        "word": "Xénial",
+        "description": "Relatif à l'hospitalité ou aux relations entre hôte et invité.",
+        "language": "fr"
+    },
+    {
+        "word": "Cédant",
+        "description": "Cédant sous pression; pas dur ou rigide.",
+        "language": "fr"
+    },
+    {
+        "word": "Zélé",
+        "description": "Ayant ou montrant un grand enthousiasme dans la poursuite d'une cause ou d'un objectif.",
+        "language": "fr"
+    }
+]

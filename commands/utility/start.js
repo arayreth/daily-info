@@ -3,6 +3,7 @@ const axios = require('axios')
 const { apiKey } = require('../../config.json')
 const config = require('../../config.json');
 const con = require('../../database.js');
+const words = require("../../word.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -179,9 +180,16 @@ module.exports = {
 					await interaction.channel.send("__Quote of the day__");
 					await interaction.channel.send("‎ \n");
 					await interaction.channel.send({content: `>  ${selectedquotes} \n ${author}`, components: [row]});
-					await interaction.channel.send("__Les paroles du jour__");
+					await interaction.channel.send("‎ \n");
+					await interaction.channel.send("__Lyrics of the day__");
 					await interaction.channel.send("‎ \n");
 					await interaction.channel.send({content: `> 🎶 ${lyrics[Response1]}`, components: [row1]})
+					await interaction.channel.send("‎ \n");
+					await interaction.channel.send("__Word of the day__");
+					await interaction.channel.send("‎ \n");
+					const englishWords = words.filter(wordObj => wordObj.language === "en");
+					const randomWord = englishWords[Math.floor(Math.random() * englishWords.length)];
+					await interaction.channel.send({content: `> **${randomWord.word}** :\n> ${randomWord.description}`})
 					await interaction.channel.send("‎ \n");
 					con.query(`SELECT * FROM server WHERE server_id = '${interaction.guild.id}'`, async (err, rows) => {
 						const city = rows[0].city;
@@ -236,9 +244,16 @@ module.exports = {
 					await interaction.channel.send("__La citation du jour__");
 					await interaction.channel.send("‎ \n");
 					await interaction.channel.send({content: `>  ${selectedquotes} \n ${author}`, components: [row]});
+					await interaction.channel.send("‎ \n");
 					await interaction.channel.send("__Les paroles du jour__");
 					await interaction.channel.send("‎ \n");
 					await interaction.channel.send({content: `> 🎶 ${lyrics[Response1]}`, components: [row1]})
+					await interaction.channel.send("‎ \n");
+					await interaction.channel.send("__Le mot du jour__");
+					await interaction.channel.send("‎ \n");
+					const frenchWords = words.filter(wordObj => wordObj.language === "fr");
+					const randomWord = frenchWords[Math.floor(Math.random() * frenchWords.length)];
+					await interaction.channel.send({content: `> **${randomWord.word}** :\n> ${randomWord.description}`})
 					await interaction.channel.send("‎ \n");
 					con.query(`SELECT * FROM server WHERE server_id = '${interaction.guild.id}'`, async (err, rows) => {
 						const city = rows[0].city;
