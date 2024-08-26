@@ -23,7 +23,7 @@ module.exports = {
 
 		const reload = new ButtonBuilder()
 			.setCustomId('reload')
-			.setEmoji("🔀")
+			.setEmoji("🔄")
 			.setStyle(ButtonStyle.Secondary);
 
 		const row = new ActionRowBuilder()
@@ -31,7 +31,7 @@ module.exports = {
 
 		const reload1 = new ButtonBuilder()
 			.setCustomId("reload1")
-			.setEmoji("🔀")
+			.setEmoji("🔄")
 			.setStyle(ButtonStyle.Secondary);
 
 		const row1 = new ActionRowBuilder()
@@ -185,11 +185,24 @@ module.exports = {
 					await interaction.channel.send("‎ \n");
 					await interaction.channel.send({content: `> 🎶 ${lyrics[Response1]}`, components: [row1]})
 					await interaction.channel.send("‎ \n");
-					await interaction.channel.send("__Word of the day__");
-					await interaction.channel.send("‎ \n");
 					const englishWords = words.filter(wordObj => wordObj.language === "en");
 					const randomWord = englishWords[Math.floor(Math.random() * englishWords.length)];
-					await interaction.channel.send({content: `> **${randomWord.word}** :\n> ${randomWord.description}`})
+					const en_em_randomWord = new EmbedBuilder()
+					.setTitle('🎲 Random Word')
+					.addFields({
+						name: `${randomWord.word}`,
+						value: `${randomWord.description}`
+					})
+					.setColor("#00ff00")
+					.setTimestamp()
+					.setFooter({ text: 'Made by Rayreth avec 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' });
+					const en_b_refresh = new ButtonBuilder()
+					.setCustomId('en-refresh')
+					.setEmoji('🔄')
+					.setStyle(ButtonStyle.Secondary);
+					const en_ar_refresh = new ActionRowBuilder()
+					.addComponents(en_b_refresh);
+					await interaction.channel.send({embeds: [en_em_randomWord], components: [en_ar_refresh]});
 					await interaction.channel.send("‎ \n");
 					con.query(`SELECT * FROM server WHERE server_id = '${interaction.guild.id}'`, async (err, rows) => {
 						const city = rows[0].city;

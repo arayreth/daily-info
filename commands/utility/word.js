@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, InteractionResponse, ButtonBuilder, ButtonStyle, ActionRowBuilder, EmbedBuilder} = require('discord.js');
+const { SlashCommandBuilder, InteractionResponse, ButtonBuilder, ButtonStyle, ActionRowBuilder, EmbedBuilder, Component} = require('discord.js');
 const con = require('../../database.js');
 const words = require("../../word.json");
 
@@ -28,7 +28,13 @@ module.exports = {
                 .setColor("#00ff00")
                 .setTimestamp()
                 .setFooter({ text: 'Made by Rayreth avec 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' });
-                interaction.reply({embeds: [en_em_randomWord]});
+                const en_b_refresh = new ButtonBuilder()
+                .setCustomId('en-refresh')
+                .setEmoji('🔄')
+                .setStyle(ButtonStyle.Secondary);
+                const en_ar_refresh = new ActionRowBuilder()
+                .addComponents(en_b_refresh);
+                interaction.reply({embeds: [en_em_randomWord], components: [en_ar_refresh]});
             }
             else if(languages === "fr") {
                 const frenchWords = words.filter(wordObj => wordObj.language === "fr");
@@ -42,7 +48,13 @@ module.exports = {
                 .setColor("#00ff00")
                 .setTimestamp()
                 .setFooter({ text: 'Made by Rayreth avec 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' })
-                interaction.reply({embeds: [fr_em_randomWord]});
+                const fr_b_refresh = new ButtonBuilder()
+                .setCustomId('fr-refresh')
+                .setEmoji('🔄')
+                .setStyle(ButtonStyle.Secondary);
+                const fr_ar_refresh = new ActionRowBuilder()
+                .addComponents(fr_b_refresh);
+                interaction.reply({embeds: [fr_em_randomWord], components: [fr_ar_refresh]});
             }
         });
     }

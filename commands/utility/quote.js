@@ -14,15 +14,15 @@ module.exports = {
 			fr : "Obtenez la citation du jour !"
 		}),
 	async execute(interaction) {
+		const reload = new ButtonBuilder()
+					.setCustomId('reload')
+					.setEmoji("🔄")
+					.setStyle(ButtonStyle.Secondary);
+		
+					const row = new ActionRowBuilder()
+					.addComponents(reload);	
 		con.query(`SELECT * FROM server WHERE server_id = ${interaction.guild.id}`, (err, rows) => {
 			if (err) throw err;
-			const reload = new ButtonBuilder()
-			.setCustomId('reload')
-			.setEmoji("🔀")
-			.setStyle(ButtonStyle.Secondary);
-
-			const row = new ActionRowBuilder()
-			.addComponents(reload);	
 			//get the language of the server
 			const languages = rows[0].languages;
 			if(languages === "en") {
