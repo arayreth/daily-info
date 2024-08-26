@@ -1,5 +1,6 @@
 const { SlashCommandBuilder, InteractionResponse, ButtonBuilder, ButtonStyle, ActionRowBuilder, EmbedBuilder} = require('discord.js');
 const con = require('../../database.js');
+const fs = require('fs');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -21,6 +22,6 @@ module.exports = {
             else if(languages === "fr") {
                 interaction.reply({content: `🏓 Pong ${interaction.client.ws.ping} ms !`});
             }
-        });
+        })
     }
-};    
+}

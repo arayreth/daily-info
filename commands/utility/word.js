@@ -1,6 +1,5 @@
 const { SlashCommandBuilder, InteractionResponse, ButtonBuilder, ButtonStyle, ActionRowBuilder, EmbedBuilder, Component} = require('discord.js');
 const con = require('../../database.js');
-const words = require("../../word.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -17,13 +16,17 @@ module.exports = {
             if (err) throw err;
             const languages = rows[0].languages;
             if(languages === "en") {
-                const englishWords = words.filter(wordObj => wordObj.language === "en");
-                const randomWord = englishWords[Math.floor(Math.random() * englishWords.length)];
+               //get the english words in the db
+               con.query(`SELECT * FROM word WHERE languages = "en"`, (err, rows) => {
+                     if(err) throw err;
+                     const englishWords = rows;
+                     const randomWord = englishWords[Math.floor(Math.random() * englishWords.length)];
+         
                 const en_em_randomWord = new EmbedBuilder()
                 .setTitle('🎲 Random Word')
                 .addFields({
                     name: `${randomWord.word}`,
-                    value: `${randomWord.description}`
+                    value: `${randomWord.definitions}`
                 })
                 .setColor("#00ff00")
                 .setTimestamp()
@@ -35,15 +38,18 @@ module.exports = {
                 const en_ar_refresh = new ActionRowBuilder()
                 .addComponents(en_b_refresh);
                 interaction.reply({embeds: [en_em_randomWord], components: [en_ar_refresh]});
+               });
             }
             else if(languages === "fr") {
-                const frenchWords = words.filter(wordObj => wordObj.language === "fr");
-                const randomWord = frenchWords[Math.floor(Math.random() * frenchWords.length)];
+                con.query(`SELECT * FROM word WHERE languages = "fr"`, (err, rows) => {
+                    if(err) throw err;
+                    const frenchWords = rows;
+                    const randomWord = frenchWords[Math.floor(Math.random() * frenchWords.length)];
                 const fr_em_randomWord = new EmbedBuilder()
                 .setTitle('🎲 Mot Aléatoire')
                 .addFields({
                     name: `${randomWord.word}`,
-                    value: `${randomWord.description}`
+                    value: `${randomWord.definitions}`
                 })
                 .setColor("#00ff00")
                 .setTimestamp()
@@ -55,6 +61,7 @@ module.exports = {
                 const fr_ar_refresh = new ActionRowBuilder()
                 .addComponents(fr_b_refresh);
                 interaction.reply({embeds: [fr_em_randomWord], components: [fr_ar_refresh]});
+            })
             }
         });
     }

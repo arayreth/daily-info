@@ -8,7 +8,6 @@ const axios = require('axios');
 const con = require('./database.js');
 const { default: DiscordAnalytics } = require("discord-analytics/discordjs")
 const moment = require('moment');
-const word = require('./word.json');
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 client.commands = new Collection();
@@ -183,14 +182,14 @@ client.on(Events.InteractionCreate, async interaction => {
 		interaction.showModal(m_id)
 	}
 	else if (interaction.customId === "en-refresh"){
-		//send a random word in english
-		const englishWords = word.filter(wordObj => wordObj.language === "en");
+		con.query(`SELECT * FROM word WHERE languages = "en"`, (err, rows) => {
+		const englishWords = rows;
 		const randomWord = englishWords[Math.floor(Math.random() * englishWords.length)];
 		const en_em_randomWord = new EmbedBuilder()
 		.setTitle('🎲 Random Word')
 		.addFields({
 			name: `${randomWord.word}`,
-			value: `${randomWord.description}`
+			value: `${randomWord.definitions}`
 		})
 		.setColor("#00ff00")
 		.setTimestamp()
@@ -202,15 +201,17 @@ client.on(Events.InteractionCreate, async interaction => {
 		const en_ar_refresh = new ActionRowBuilder()
 		.addComponents(en_b_refresh);
 		interaction.update({embeds: [en_em_randomWord], components: [en_ar_refresh]});
+	})
 	}
 		else if(interaction.customId === "fr-refresh"){
-			const frenchWords = word.filter(wordObj => wordObj.language === "fr");
+			con.query(`SELECT * FROM word WHERE languages = "fr"`, (err, rows) => {
+			const frenchWords = rows;
 			const randomWord = frenchWords[Math.floor(Math.random() * frenchWords.length)];
 			const fr_em_randomWord = new EmbedBuilder()
 			.setTitle('🎲 Mot Aléatoire')
 			.addFields({
 				name: `${randomWord.word}`,
-				value: `${randomWord.description}`
+				value: `${randomWord.definitions}`
 			})
 			.setColor("#00ff00")
 			.setTimestamp()
@@ -222,6 +223,7 @@ client.on(Events.InteractionCreate, async interaction => {
 			const fr_ar_refresh = new ActionRowBuilder()
 			.addComponents(fr_b_refresh);
 			interaction.update({embeds: [fr_em_randomWord], components: [fr_ar_refresh]});
+		})
 		}
 	}
 	else if (interaction.isStringSelectMenu()){

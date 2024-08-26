@@ -3,7 +3,6 @@ const axios = require('axios')
 const { apiKey } = require('../../config.json')
 const config = require('../../config.json');
 const con = require('../../database.js');
-const words = require("../../word.json");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -185,13 +184,14 @@ module.exports = {
 					await interaction.channel.send("‎ \n");
 					await interaction.channel.send({content: `> 🎶 ${lyrics[Response1]}`, components: [row1]})
 					await interaction.channel.send("‎ \n");
-					const englishWords = words.filter(wordObj => wordObj.language === "en");
+					con.query(`SELECT * FROM word WHERE languages = "en"`, async (err, rows) => {
+					const englishWords = rows;
 					const randomWord = englishWords[Math.floor(Math.random() * englishWords.length)];
 					const en_em_randomWord = new EmbedBuilder()
 					.setTitle('🎲 Random Word')
 					.addFields({
 						name: `${randomWord.word}`,
-						value: `${randomWord.description}`
+						value: `${randomWord.definitions}`
 					})
 					.setColor("#00ff00")
 					.setTimestamp()
@@ -204,6 +204,7 @@ module.exports = {
 					.addComponents(en_b_refresh);
 					await interaction.channel.send({embeds: [en_em_randomWord], components: [en_ar_refresh]});
 					await interaction.channel.send("‎ \n");
+				})
 					con.query(`SELECT * FROM server WHERE server_id = '${interaction.guild.id}'`, async (err, rows) => {
 						const city = rows[0].city;
 						await axios.get(
@@ -262,12 +263,26 @@ module.exports = {
 					await interaction.channel.send("‎ \n");
 					await interaction.channel.send({content: `> 🎶 ${lyrics[Response1]}`, components: [row1]})
 					await interaction.channel.send("‎ \n");
-					await interaction.channel.send("__Le mot du jour__");
-					await interaction.channel.send("‎ \n");
-					const frenchWords = words.filter(wordObj => wordObj.language === "fr");
+					con.query(`SELECT * FROM word WHERE languages = "fr"`, async (err, rows) => {
+					const frenchWords = rows;
 					const randomWord = frenchWords[Math.floor(Math.random() * frenchWords.length)];
-					await interaction.channel.send({content: `> **${randomWord.word}** :\n> ${randomWord.description}`})
-					await interaction.channel.send("‎ \n");
+					const fr_em_randomWord = new EmbedBuilder()
+					.setTitle('🎲 Mot Aléatoire')
+					.addFields({
+						name: `${randomWord.word}`,
+						value: `${randomWord.definitions}`
+					})
+					.setColor("#00ff00")
+					.setTimestamp()
+					.setFooter({ text: 'Fait par Rayreth avec 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' })
+					const fr_b_refresh = new ButtonBuilder()
+                	.setCustomId('fr-refresh')
+                	.setEmoji('🔄')
+                	.setStyle(ButtonStyle.Secondary);
+                	const fr_ar_refresh = new ActionRowBuilder()
+                	.addComponents(fr_b_refresh);
+					await interaction.channel.send({embeds: [fr_em_randomWord], components: [fr_ar_refresh]});
+					})
 					con.query(`SELECT * FROM server WHERE server_id = '${interaction.guild.id}'`, async (err, rows) => {
 						const city = rows[0].city;
 						await axios.get(
