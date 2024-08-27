@@ -107,28 +107,31 @@ client.on(Events.InteractionCreate, async interaction => {
 		)
 	}
 		else if(interaction.customId === "reload1"){
-			const reload1 = new ButtonBuilder()
-			.setCustomId("reload1")
-			.setEmoji("🔀")
-			.setStyle(ButtonStyle.Secondary);
+    const reload1 = new ButtonBuilder()
+    .setCustomId("reload1")
+    .setEmoji("🔄")
+    .setStyle(ButtonStyle.Secondary);
 
-			const row1 = new ActionRowBuilder()
-			.addComponents(reload1);	
-			const lyrics = [
-				"J'rap tellement bien qu'on dit que j'rap mal\n- Kery james",
-				"I only see my goals, I don't believe in failure, cause I know the smallest voices, they can make it major\n- Lukas Graham",
-				"Échouer, ou réussir, mais au moins tenter sa chance. Moi je dis que plus le combat est grand, plus la victoire est immense\n- Kery james",
-				"Oh if there's one thing to be taught, it's dreams are made to be caught\n- Gavin DeGraw",
-				"When I get older I will be stronger, they'll call me freedom just like a wavin' flag\n- K'Naan",
-				"Standing in the hall of fame ,and the world's gonna know your nam\n- The script",
-				"Maman m'a dit la vie n'est pas facile, mais plus facile avec un grand sourire\n- Soprano",
-				"J'ai fait mon choix et je t'emmerde, désormais qui m'aime me suive.Désormais qui m'aime me traîne, beaucoup plus haut que je ne vise\n- Diams",
-				"J'ai rien d'exceptionnel, j'ai des tas de potes à l'habitude.Mais mon meilleur ami s'appelle solitude\n- Sniper",
-				"Bienvenue dans ma chambre j'y glande, voyage sur commande.Je fais le tour du globe à l'aide de ma télécommande\n- Sniper"
-			];
-			const Response1 = Math.floor(Math.random() * lyrics.length);
-			await interaction.reply({content: `> 🎶 ${lyrics[Response1]}`, components: [row1]})
-		}
+    const row1 = new ActionRowBuilder()
+    .addComponents(reload1);	
+    con.query(`SELECT * FROM server WHERE server_id = ${interaction.guild.id}`, (err, rows) => {
+        if (err) throw err;
+        const languages = rows[0].languages;
+        if(languages === "en") {
+        con.query(`SELECT * FROM lyrics WHERE languages = "en"`, (err, rows) => {
+        const englishLyrics = rows;
+        const randomLyrics = englishLyrics[Math.floor(Math.random() * englishLyrics.length)];
+        interaction.update({content: `> ${randomLyrics.lyrics} \n ${randomLyrics.author}`, components: [row1]});
+        });
+    }
+        else if(languages === "fr") {
+        con.query(`SELECT * FROM lyrics WHERE languages = "fr"`, (err, rows) => {
+        const frenchLyrics = rows;
+        const randomLyrics = frenchLyrics[Math.floor(Math.random() * frenchLyrics.length)];
+        interaction.update({content: `> ${randomLyrics.lyrics} \n ${randomLyrics.author}`, components: [row1]});
+        })
+    }
+})}
 		else if(interaction.customId === "next"){
 			const m_city = new ModalBuilder()
 			.setCustomId('m_city')
