@@ -21,6 +21,7 @@ module.exports = {
 		
 					const row = new ActionRowBuilder()
 					.addComponents(reload);	
+		await interaction.deferReply();		
 		con.query(`SELECT * FROM server WHERE server_id = ${interaction.guild.id}`, (err, rows) => {
 			if (err) throw err;
 			//get the language of the server
@@ -36,7 +37,7 @@ module.exports = {
 					const Response = Math.floor(Math.random() * quotes.length);
 					const selectedquotes = quotes[Response];
 					const author = rows[Response].author;
-					interaction.reply("__Quote of the day__");
+					interaction.editReply("__Quote of the day__");
 					interaction.channel.send("‎ \n");
 					interaction.channel.send({content: `>  ${selectedquotes} \n ${author}`, components: [row]});
 				});
@@ -51,7 +52,7 @@ module.exports = {
 					const Response = Math.floor(Math.random() * quotes.length);
 					const selectedquotes = quotes[Response];
 					const author = rows[Response].author;
-					interaction.reply("__La citation du jour__");
+					interaction.editReply("__La citation du jour__");
 					interaction.channel.send("‎ \n");
 					interaction.channel.send({content: `>  ${selectedquotes} \n ${author}`, components: [row]});
 				}

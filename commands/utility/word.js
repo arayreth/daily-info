@@ -12,6 +12,7 @@ module.exports = {
             fr : "Obtenez la latence du bot."
         }),
 	async execute(interaction) {
+        await interaction.deferReply();
         con.query(`SELECT * FROM server WHERE server_id = ${interaction.guild.id}`, (err, rows) => {
             if (err) throw err;
             const languages = rows[0].languages;
@@ -37,7 +38,7 @@ module.exports = {
                 .setStyle(ButtonStyle.Secondary);
                 const en_ar_refresh = new ActionRowBuilder()
                 .addComponents(en_b_refresh);
-                interaction.reply({embeds: [en_em_randomWord], components: [en_ar_refresh]});
+                interaction.editReply({embeds: [en_em_randomWord], components: [en_ar_refresh]});
                });
             }
             else if(languages === "fr") {
@@ -60,7 +61,7 @@ module.exports = {
                 .setStyle(ButtonStyle.Secondary);
                 const fr_ar_refresh = new ActionRowBuilder()
                 .addComponents(fr_b_refresh);
-                interaction.reply({embeds: [fr_em_randomWord], components: [fr_ar_refresh]});
+                interaction.editReply({embeds: [fr_em_randomWord], components: [fr_ar_refresh]});
             })
             }
         });

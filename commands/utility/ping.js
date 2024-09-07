@@ -13,14 +13,15 @@ module.exports = {
             fr : "Obtenez la latence du bot."
         }),
 	async execute(interaction) {
+        await interaction.deferReply();
         con.query(`SELECT * FROM server WHERE server_id = ${interaction.guild.id}`, (err, rows) => {
             if (err) throw err;
             const languages = rows[0].languages;
             if(languages === "en") {
-                interaction.reply({content: `🏓 Pong ${interaction.client.ws.ping} ms !`});
+                interaction.editReply({content: `🏓 Pong ${interaction.client.ws.ping} ms !`});
             }
             else if(languages === "fr") {
-                interaction.reply({content: `🏓 Pong ${interaction.client.ws.ping} ms !`});
+                interaction.editReply({content: `🏓 Pong ${interaction.client.ws.ping} ms !`});
             }
         })
     }

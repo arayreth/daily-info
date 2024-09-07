@@ -14,6 +14,7 @@ module.exports = {
             fr : "Obtenez la latence du bot."
         }),
 	async execute(interaction) {
+        await interaction.deferReply();
         con.query(`SELECT * FROM server WHERE server_id = ${interaction.guild.id}`, (err, rows) => {
             if (err) throw err;
             const languages = rows[0].languages;
@@ -48,7 +49,7 @@ module.exports = {
                         )
                         .setTimestamp()
                         .setFooter({ text: 'Made by Rayreth with 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' });
-                        await interaction.reply({ embeds: [weather_embed] })
+                        await interaction.editReply({ embeds: [weather_embed] })
                     }
                     )
                 })
@@ -82,7 +83,7 @@ module.exports = {
                 )
                 .setTimestamp()
                 .setFooter({ text: 'Fait par Rayreth avec 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' })
-                await interaction.reply({ embeds: [weather_embed] });
+                await interaction.editReply({ embeds: [weather_embed] });
             }    
         )}        
         });

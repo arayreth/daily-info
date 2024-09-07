@@ -13,6 +13,7 @@ module.exports = {
             fr : "Obtenez de l'aide pour le bot."
         }),
 	async execute(interaction) {
+        await interaction.deferReply();
         con.query(`SELECT * FROM server where server_id = ${interaction.guild.id}`, (err, rows) => {
         if(err) throw err;
         if(rows[0].languages === "en"){
@@ -33,7 +34,7 @@ module.exports = {
            ) 
            .setTimestamp()
            .setFooter({ text: 'Made by Rayreth with 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' });
-           interaction.reply({ embeds: [em_en_help] });
+           interaction.editReply({ embeds: [em_en_help] });
         } else if(rows[0].languages === "fr"){
            const em_fr_help = new EmbedBuilder()
             .setTitle("Aide")
@@ -52,7 +53,7 @@ module.exports = {
             )
             .setTimestamp()
             .setFooter({ text: 'Fait par Rayreth avec 💖', iconURL: 'https://cdn.discordapp.com/icons/1040645618311385158/577f596043d0ea6a4cc91859cebfcf11.webp?size=160' })
-            interaction.reply({ embeds: [em_fr_help] });
+            interaction.editReply({ embeds: [em_fr_help] });
         }
         }
         );

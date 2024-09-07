@@ -12,6 +12,7 @@ module.exports = {
             fr : "Obtenez le serveur de support du bot."
         }),
 	async execute(interaction) {
+        await interaction.deferReply();
         con.query(`SELECT * FROM server WHERE server_id = ${interaction.guild.id}`, (err, rows) => {
             if (err) throw err;
             const languages = rows[0].languages;
@@ -24,7 +25,7 @@ module.exports = {
 
                 const en_b_l = new ActionRowBuilder().addComponents(en_b_l_support)
 
-                interaction.reply({content: "🔗 Here is the link to the support server:", components: [en_b_l]});
+                interaction.editReply({content: "🔗 Here is the link to the support server:", components: [en_b_l]});
             }
             else if(languages === "fr") {
                 const fr_b_l_support = new ButtonBuilder()
@@ -35,7 +36,7 @@ module.exports = {
 
                 const fr_b_l = new ActionRowBuilder().addComponents(fr_b_l_support)
 
-                interaction.reply({content: "🔗 Voici le lien du serveur de support:", components: [fr_b_l]});
+                interaction.editReply({content: "🔗 Voici le lien du serveur de support:", components: [fr_b_l]});
             }
         });
     }

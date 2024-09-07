@@ -295,7 +295,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	if(interaction.customId === "en_suggestquote"){
 		const quote = interaction.fields.getTextInputValue('en_quote');
 		const author = interaction.fields.getTextInputValue('en_author');
-		con.query(`INSERT INTO t_quotes (quotes, author, languages, user_id) VALUES ('${quote}', '- ${author}', 'en',${interaction.user.id})`, (err, rows) => {
+		con.query(`INSERT INTO t_quotes (quotes, author, languages, user_id) VALUES ("${quote}", "- ${author}", "en",${interaction.user.id})`, (err, rows) => {
 			if (err) return console.log(err);
 		});
 		const b_en_validate = new ButtonBuilder()
@@ -323,7 +323,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	else if(interaction.customId === "fr_suggestquote"){
 		const quote = interaction.fields.getTextInputValue('fr_quote');
 		const author = interaction.fields.getTextInputValue('fr_author');
-		con.query(`INSERT INTO t_quotes (quotes, author, languages, user_id) VALUES ('${quote}', '- ${author}', 'fr',${interaction.user.id})`, (err, rows) => {
+		con.query(`INSERT INTO t_quotes (quotes, author, languages, user_id) VALUES ("${quote}", "- ${author}", "fr",${interaction.user.id})`, (err, rows) => {
 			if (err) return console.log(err);
 		});
 		const b_fr_validate = new ButtonBuilder()
@@ -355,7 +355,10 @@ client.on(Events.InteractionCreate, async interaction => {
 			const quote = rows[0].quotes;
 			const author = rows[0].author;
 			const languages = rows[0].languages;
-			con.query(`INSERT INTO quotes (quotes, author, languages) VALUES ('${quote}', '${author}', '${languages}')`, (err, rows) => {
+			const escapedquote = con.escape(quote);
+			const escapedauthor = con.escape(author);
+			const escapedlanguages = con.escape(languages);
+			con.query(`INSERT INTO quotes (quotes, author, languages) VALUES ("${escapedquote}", '${escapedauthor}', "${escapedlanguages}")`, (err, rows) => {
 				if (err) return console.log(err);
 			});
 			con.query(`DELETE FROM t_quotes WHERE id = ${id}`, (err, rows) => {
@@ -374,7 +377,7 @@ client.on(Events.InteractionCreate, async interaction => {
 	else if(interaction.customId === "en_reviews"){
 		const username = interaction.fields.getTextInputValue('en_username');
 		const review = interaction.fields.getTextInputValue('en_review');
-		con.query(`INSERT INTO reviews (user_id, username, reviews, languages) VALUES ('${interaction.user.id}','${username}', '${review}', 'en')`, (err, rows) => {
+		con.query(`INSERT INTO reviews (user_id, username, reviews, languages) VALUES ("${interaction.user.id}","${username}", "${review}", 'en')`, (err, rows) => {
 			if (err) return console.log(err);
 		});
 		client.channels.cache.get("1276473701537419274").send("New review in English !\n> " + review + "\n- " + username).catch((error) => {console.log("Could not send a message to the channel for the review in English.")});

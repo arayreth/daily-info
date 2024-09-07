@@ -36,6 +36,7 @@ module.exports = {
 		const row1 = new ActionRowBuilder()
 			.addComponents(reload1);			
 		con.query(`SELECT * FROM server WHERE server_id = '${interaction.guild.id}'`, async (err, rows) => {
+			await interaction.deferReply();
 			const languages = rows[0].languages;
 			if(languages === "en") {
 				//get a quotes from the database and send a random one
@@ -47,7 +48,7 @@ module.exports = {
 					const Response = Math.floor(Math.random() * quotes.length);
 					const selectedquotes = quotes[Response];
 					const author = rows[Response].author;
-					await interaction.reply(`<:chapo:1263872856442540057> Welcome **${interaction.user.username}** !`);
+					await interaction.editReply(`<:chapo:1263872856442540057> Welcome **${interaction.user.username}** !`);
 					await interaction.channel.send("‎ \n");
 					await interaction.channel.send("⌚ We are the <t:" + toTimestamp(new Date()) + ":D>, it's <t:" + toTimestamp(new Date()) + ":t> ! ");
 					await interaction.channel.send("‎ \n");
@@ -130,7 +131,7 @@ module.exports = {
 					const Response = Math.floor(Math.random() * quotes.length);
 					const selectedquotes = quotes[Response];
 					const author = rows[Response].author;
-					await interaction.reply(`<:chapo:1263872856442540057> Bienvenue **${interaction.user.username}** !`);
+					await interaction.editReply(`<:chapo:1263872856442540057> Bienvenue **${interaction.user.username}** !`);
 					await interaction.channel.send("‎ \n");
 					await interaction.channel.send("⌚ Nous sommes le <t:" + toTimestamp(new Date()) + ":D>, il est <t:" + toTimestamp(new Date()) + ":t> ! ");
 					await interaction.channel.send("‎ \n");

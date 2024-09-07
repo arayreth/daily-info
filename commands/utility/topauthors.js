@@ -12,6 +12,7 @@ module.exports = {
             fr: "Obtenez le classement des auteurs ayant le plus de citations."
         }),
 	async execute(interaction) {
+        await interaction.deferReply();
         con.query(`SELECT * FROM server WHERE server_id = ${interaction.guild.id}`, (err, rows) => {
             if (err) throw err;
             const languages = rows[0].languages;
@@ -60,7 +61,7 @@ module.exports = {
                             });
                         });
 
-                    interaction.reply({ embeds: [en_top_author_embed] });
+                    interaction.editReply({ embeds: [en_top_author_embed] });
                 });
             } else if (languages === "fr") {
                 const query = `
@@ -106,7 +107,7 @@ module.exports = {
                             });
                         });
 
-                    interaction.reply({ embeds: [fr_top_author_embed] });
+                    interaction.editReply({ embeds: [fr_top_author_embed] });
                 })
             }
         });
