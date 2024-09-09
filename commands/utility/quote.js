@@ -27,34 +27,36 @@ module.exports = {
 			//get the language of the server
 			const languages = rows[0].languages;
 			if(languages === "en") {
-				con.query(`SELECT * FROM quotes WHERE languages = "en"`, (err, rows) => {
+				con.query(`SELECT * FROM quotes WHERE languages = "en" ORDER BY RAND ()`, (err, rows) => {
 					if (err) throw err;
 					//get the quotes from the database and send a random one
-					const quotes = [];
-					for (let i = 0; i < rows.length; i++) {
-						quotes.push(rows[i].quotes);
-					}
-					const Response = Math.floor(Math.random() * quotes.length);
-					const selectedquotes = quotes[Response];
-					const author = rows[Response].author;
+					//const quotes = [];
+					//for (let i = 0; i < rows.length; i++) {
+					//	quotes.push(rows[i].quotes);
+					//}
+					//const Response = Math.floor(Math.random() * quotes.length);
+					//const selectedquotes = quotes[Response];
+					//const author = rows[Response].author;
 					interaction.editReply("__Quote of the day__");
 					interaction.channel.send("‎ \n");
-					interaction.channel.send({content: `>  ${selectedquotes} \n ${author}`, components: [row]});
+					interaction.channel.send({content: `>  ${rows[0].quotes} \n ${rows[0].author}`, components: [row]});
+					//interaction.channel.send({content: `>  ${selectedquotes} \n ${author}`, components: [row]});
 				});
 			}
 			else if(languages === "fr") {
-				con.query(`SELECT * FROM quotes WHERE languages = "fr"`, (err, rows) => {
+				con.query(`SELECT * FROM quotes WHERE languages = "fr" ORDER BY RAND()`, (err, rows) => {
 					if (err) throw err;
-					const quotes = [];
-					for (let i = 0; i < rows.length; i++) {
-						quotes.push(rows[i].quotes);
-					}
-					const Response = Math.floor(Math.random() * quotes.length);
-					const selectedquotes = quotes[Response];
-					const author = rows[Response].author;
+					//const quotes = [];
+					//for (let i = 0; i < rows.length; i++) {
+					//	quotes.push(rows[i].quotes);
+					//}
+					//const Response = Math.floor(Math.random() * quotes.length);
+					//const selectedquotes = quotes[Response];
+					//const author = rows[Response].author;
 					interaction.editReply("__La citation du jour__");
 					interaction.channel.send("‎ \n");
-					interaction.channel.send({content: `>  ${selectedquotes} \n ${author}`, components: [row]});
+					interaction.channel.send({content: `>  ${rows[0].quotes} \n ${rows[0].author}`, components: [row]});
+					//interaction.channel.send({content: `>  ${selectedquotes} \n ${author}`, components: [row]});
 				}
 			);
       	}
